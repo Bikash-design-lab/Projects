@@ -3,39 +3,33 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="flex container border-2 justify-between items-center p-4 bg-gray-800">
-      <div className="flex justify-center items-center space-x-6">
-        <NavLink
-          className="bg-red-400 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
-          to="/"
-        >
+    <div className="flex container border-2 justify-evenly items-center p-2 bg-red-200 ml-28">
+      <div>
+        <NavLink className="bg-red-400 px-2 py-1 rounded text-white" to="/">
           Home
         </NavLink>
-        <NavLink
-          className="bg-red-400 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
-          to="/Products"
-        >
-          Products
-        </NavLink>
-        <NavLink
-          className="bg-red-400 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
-          to="/About"
-        >
-          About
-        </NavLink>
-        <NavLink
-          className="bg-red-400 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
-          to="/Profile"
-        >
-          Profile
-        </NavLink>
-        <NavLink
-          className="bg-red-400 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
-          to="/Register"
-        >
-          Register
-        </NavLink>
       </div>
+      <NavLink
+        className="bg-red-400 px-2 py-1 rounded text-white"
+        to="/Products"
+      >
+        Products
+      </NavLink>
+      <NavLink className="bg-red-400 px-2 py-1 rounded text-white" to="/About">
+        About
+      </NavLink>
+      <NavLink
+        className="bg-red-400 px-2 py-1 rounded text-white"
+        to="/Profile"
+      >
+        Profile
+      </NavLink>
+      <NavLink
+        className="bg-red-400 px-2 py-1 rounded text-white"
+        to="/Register"
+      >
+        Register
+      </NavLink>
     </div>
   );
 };
