@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X (Twitter Clone)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'twitter-blue': '#1DA1F2',
+                        'twitter-dark': '#15202B',
+                        'twitter-gray': '#2F3336',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-black text-white">
+    <div class="container mx-auto flex border-4  ">
+        <div class="w-[275px] fixed h-screen px-10 py-2 overflow-y-auto ">
+            <!-- X Logo -->
+            <div class="w-14 h-14 flex items-center justify-center rounded-full hover:bg-gray-800/60 cursor-pointer mb-2">
+                <svg viewBox="0 0 24 24" class="w-8 h-8 text-white fill-current">
+                    <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+                </svg>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors group">
+                    <span class="material-symbols-outlined text-2xl">home</span>
+                    <span class="ml-5 font-bold">Home</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                    <span class="ml-5">Explore</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">notifications</span>
+                    <span class="ml-5">Notifications</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">mail</span>
+                    <span class="ml-5">Messages</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">list_alt</span>
+                    <span class="ml-5">Lists</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">bookmark</span>
+                    <span class="ml-5">Bookmarks</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">verified</span>
+                    <span class="ml-5">Verified</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                    <span class="ml-5">Profile</span>
+                </a>
+                <a href="#" class="flex items-center p-3 text-xl rounded-full hover:bg-gray-800/60 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">more_horiz</span>
+                    <span class="ml-5">More</span>
+                </a>
+            </nav>
+
+            <button class="w-[90%] bg-twitter-blue hover:bg-blue-600 text-white font-bold text-lg py-3 rounded-full mt-4 transition-colors">
+                Post
+            </button>
+
+            <button class="flex items-center w-full p-3 mt-auto mb-4 rounded-full hover:bg-gray-800/60 transition-colors">
+                <img src="https://img.freepik.com/premium-vector/symbol-wear-safety-glassed-white-backgroundvector-illustration_112413-11357.jpg?ga=GA1.1.884081781.1728731746&semt=ais_hybrid" alt="Profile" class="w-10 h-10 rounded-full">
+                <div class="ml-3 text-left flex-grow">
+                    <div class="font-bold">Bikash barnwal</div>
+                    <div class="text-gray-500">@bikashbarnwal</div>
+                </div>
+                <span class="material-symbols-outlined">more_horiz</span>
+            </button>
+        </div>
+
+        <main class="w-[600px] min-h-screen border-x border-gray-800 ml-[275px] ">
+            <header class="sticky top-0 z-10 bg-black/80 backdrop-blur-md border-b border-gray-800">
+                <div class="px-4 py-3">
+                    <h1 class="text-xl font-bold">Home</h1>
+                </div>
+                <div class="flex">
+                    <button class="flex-1 py-4 hover:bg-gray-800/60 relative group">
+                        <span class="font-bold">For you</span>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-twitter-blue transform scale-x-100"></div>
+                    </button>
+                    <button class="flex-1 py-4 hover:bg-gray-800/60 text-gray-500">
+                        <span class="font-bold">Following</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Tweet Composer -->
+            <div class="flex px-4 py-3 border-b border-gray-800">
+                <img src="https://img.freepik.com/premium-vector/symbol-wear-safety-glassed-white-backgroundvector-illustration_112413-11357.jpg?ga=GA1.1.884081781.1728731746&semt=ais_hybrid" alt="Profile" class="w-12 h-12 rounded-full">
+                <div class="ml-4 flex-grow">
+                    <div class="min-h-[120px]">
+                        <textarea 
+                            placeholder="What is happening?!" 
+                            class="w-full bg-transparent border-none text-xl placeholder-gray-600 resize-none focus:ring-0"
+                            rows="4"
+                        ></textarea>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-gray-800">
+                        <div class="flex -ml-2">
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">image</span>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">gif_box</span>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">list_alt</span>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">sentiment_satisfied</span>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">calendar_today</span>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-blue-500/10 text-twitter-blue">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </button>
+                        </div>
+                        <button class="bg-twitter-blue px-4 py-1.5 rounded-full font-bold opacity-50 cursor-not-allowed">
+                            Post
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweets -->
+            <div class="divide-y divide-gray-800">
+                <!-- Tweet -->
+                <article class="p-4 hover:bg-gray-800/40 cursor-pointer transition-colors">
+                    <div class="flex">
+                        <img src="https://img.freepik.com/free-vector/gradient-mustache-emoji-illustration_23-2151041616.jpg?ga=GA1.1.884081781.1728731746&semt=ais_hybrid" alt="Profile" class="w-12 h-12 rounded-full">
+                        <div class="ml-4 flex-grow">
+                            <div class="flex items-center">
+                                <span class="font-bold hover:underline">Ellon Musk</span>
+                                <svg class="w-5 h-5 ml-1 text-twitter-blue" viewBox="0 0 24 24" aria-label="Verified account" fill="currentColor">
+                                    <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"></path>
+                                </svg>
+                                <span class="ml-1 text-gray-500">@elonmusk</span>
+                                <span class="mx-1 text-gray-500">·</span>
+                                <span class="text-gray-500">14h</span>
+                            </div>
+                            <p class="mt-2 text-[15px]">Wise words from a true genius...</p>
+                            <div class="mt-3 rounded-2xl border border-gray-800 overflow-hidden">
+                                <img src="" alt="Tweet media" class="w-full">
+                            </div>
+                            <div class="flex justify-between mt-3 text-gray-500 -ml-2">
+                                <button class="flex items-center group">
+                                    <div class="p-2 rounded-full group-hover:bg-blue-500/10 group-hover:text-twitter-blue">
+                                        <span class="material-symbols-outlined">chat_bubble_outline</span>
+                                    </div>
+                                    <span class="group-hover:text-twitter-blue text-sm">439</span>
+                                </button>
+                                <button class="flex items-center group">
+                                    <div class="p-2 rounded-full group-hover:bg-green-500/10 group-hover:text-green-500">
+                                        <span class="material-symbols-outlined">repeat</span>
+                                    </div>
+                                    <span class="group-hover:text-green-500 text-sm">5.2K</span>
+                                </button>
+                                <button class="flex items-center group">
+                                    <div class="p-2 rounded-full group-hover:bg-pink-500/10 group-hover:text-pink-500">
+                                        <span class="material-symbols-outlined">favorite_border</span>
+                                    </div>
+                                    <span class="group-hover:text-pink-500 text-sm">48K</span>
+                                </button>
+                                <button class="flex items-center group">
+                                    <div class="p-2 rounded-full group-hover:bg-blue-500/10 group-hover:text-twitter-blue">
+                                        <span class="material-symbols-outlined">bar_chart</span>
+                                    </div>
+                                    <span class="group-hover:text-twitter-blue text-sm">2.1M</span>
+                                </button>
+                                <button class="p-2 rounded-full hover:bg-blue-500/10 hover:text-twitter-blue">
+                                    <span class="material-symbols-outlined">ios_share</span>
+                                </button>
+                                
+                            </div>
+                            <div class="text-white border-2 mr-10 rounded">
+                                <iframe width="500" height="315" src="https://www.youtube.com/embed/IgKWPdJWuBQ?si=mHhaLaR784GWCQSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <hr class="py-3">
+                                <iframe width="500" height="315" src="https://www.youtube.com/embed/tnBQmEqBCY0?si=bG5ZKD3usB7nKxFF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main > 
+        <div class="flex text-white" >
+            <div class="third w-fit bg-black text-white px-2">
+                <div class="search m-1">
+                    <input
+                        class=" bg-black border border-gray-400 text-white px-10 py-1 font-bold rounded-full hover:cursor-pointer "
+                        type="text" placeholder="🔎  Search...">
+                </div>
+                <div class="premium border border-gray-950  p-2 m-1 ">
+                    <h1 class="">Try Premium for today</h1>
+                    <p class="font-light break-words">Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Iusto,
+                        accusamus.</p>
+                    <input class="border border-indigo-100 rounded-full px-3 text-white bg-black hover:cursor-pointer"
+                        type="text" placeholder="Start 14-days free trial">
+                </div>
+                <div class="news border border-gray-900 m-1 w-full px-3 py-2">
+                    <h1 class="text-xl font-semibold">Live on X</h1>
+    
+                    <div class="flex justify-between items-center flex-wrap">
+    
+                        <div class="newsChannel flex items-center space-x-2">
+                            <span class="material-symbols-outlined text-lg">
+                                tv_guide
+                            </span>
+                            <span class="font-medium text-white ">Sky News</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                            <p class="liveHosting font-light px-1">is hosting</p>
+                        </div>
+    
+                        <div class="channelLogo flex items-center  rounded-full  px-2 py-2 space-x-2">
+                            <img class="w-8 rounded-full"
+                                src="https://pbs.twimg.com/profile_images/1604907328242962433/P_79at43_400x400.jpg"
+                                alt="Channel Logo">
+                            <p class="font-bold text-white0">+60.8K</p>
+                        </div>
+                    </div>
+    
+                    <p class="mt-2 text-sm break-words">
+                        Watch Live: UK shrouded <br> in fog and low cloud of...
+                    </p>
+                    <hr>
+                    <br>
+    
+                    <div class="flex justify-between items-center flex-wrap">
+
+                        <div class="newsChannel flex items-center space-x-2">
+                            <span class="material-symbols-outlined text-lg">
+                                tv_guide
+                            </span>
+                            <span class="font-medium text-white">Sky News</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                            <p class="liveHosting font-light px-1">is hosting</p>
+                        </div>
+    
+                        <div class="channelLogo flex items-center rounded-full  px-2 py-2 space-x-2">
+                            <img class="w-8 rounded-full"
+                                src="https://pbs.twimg.com/profile_images/1604907328242962433/P_79at43_400x400.jpg"
+                                alt="Channel Logo">
+                            <p class="font-bold text-white">+19.4K</p>
+                        </div>
+                    </div>
+    
+                    <p class="mt-2 text-sm break-words">
+                        Watch Live: India break silence <br> on One Nation One Election...
+                    </p>
+                    <hr>
+                    <br>
+                    <div class="flex justify-between items-center flex-wrap">
+    
+                        <!-- Left Section: newsChannel -->
+                        <div class="newsChannel flex items-center space-x-2">
+                            <span class="material-symbols-outlined text-lg">
+                                tv_guide
+                            </span>
+                            <span class="font-medium text-white">Sky News</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                            <p class="liveHosting font-light px-1">is hosting</p>
+                        </div>
+    
+                        <!-- Right Section: channelLogo -->
+                        <div class="channelLogo flex items-center  rounded-full  px-2 py-2 space-x-2">
+                            <img class="w-8 rounded-full"
+                                src="https://pbs.twimg.com/profile_images/1604907328242962433/P_79at43_400x400.jpg"
+                                alt="Channel Logo">
+                            <p class="font-bold text-white">+29K</p>
+                        </div>
+                    </div>
+    
+                    <!-- Content: News Description -->
+                    <p class="mt-2 text-sm break-words">
+                        Watch Live:"देश-दुनिया की बड़ी खबर"...
+                    </p>
+                </div>
+                <div class="channelOnX w-auto border border-gray-300 pr-">
+                    <h1 class="text-lg font-bold mb-4 m-1 mx-4 ">You Might Like</h1>
+                    <div class="channel-item w-fit flex items-center mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/1529107486271225859/03qcVNIk_400x400.jpg"
+                            alt="Channel 1" class="w-8 h-10 rounded-full mr-3" />
+                        <div class="flex-grow">
+                            <span class="block font-bold text-white">BBC News</span>
+                            <span class="tagChannel block text-sm text-gray-500">@BBC</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-white bg-blue-500 m-1 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="channel-item flex items-center mb-3 m-1 mx-4  ">
+                        <img src="https://pbs.twimg.com/profile_images/877266356730712064/FmOQMMyG_400x400.jpg"
+                            alt="Channel 2" class="w-8 h-10 rounded-full mr-3" />
+                        <div class="flex-grow ">
+                            <span class="block font-bold text-white">Reuters</span>
+                            <span class="tagChannel block text-sm text-gray-500">@reuters</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300  mr-20 bg-blue-500 m-1 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="channel-item flex items-center mb-3 m-1 mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/925092227667304448/fAY1HUu3_400x400.jpg"
+                            alt="Channel 3" class="w-8 h-10 rounded-full mr-3" />
+                        <div class="flex-grow">
+                            <span class="block font-bold text-white">CNN</span>
+                            <span class="tagChannel block text-sm text-gray-500 px-3">@cnn</span>
+                            <svg  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300  mr-20 bg-blue-500 m-1 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="channel-item flex items-center m-1 mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/1561248901117923328/To5m8vSP_400x400.png"
+                            alt="Channel 4" class="w-8 h-10 rounded-full mr-3 " />
+                        <div class="flex-grow ">
+                            <span class="block font-bold text-white">NDTV</span>
+                            <span class=" tagChannel block text-sm text-gray-500 px-3">@ndtv</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300 bg-blue-500 mr-20 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                     </div>
+
+                     <div class="channel-item flex items-center m-1 mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/1395254075285860354/LG45JNi8_400x400.jpg"
+                            alt="Channel 4" class="w-8 h-10 rounded-full mr-3 " />
+                        <div class="flex-grow ">
+                            <span class="block font-bold text-white">Aaj tak</span>
+                            <span class=" tagChannel block text-sm text-gray-500 px-3">@aajTak</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300 bg-blue-500 mr-20 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                     </div>
+                     <div class="channel-item flex items-center m-1 mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/1818213127286087680/CtPVxlPF_normal.jpg"
+                            alt="Channel 4" class="w-8 h-10 rounded-full mr-3 " />
+                        <div class="flex-grow ">
+                            <span class="block font-bold text-white">Al jazeera</span>
+                            <span class=" tagChannel block text-sm text-gray-500 px-3">@aljazeera</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300 bg-blue-500 mr-20 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                     </div>
+                     <div class="channel-item flex items-center m-1 mx-4">
+                        <img src="https://pbs.twimg.com/profile_images/1858092360443580416/rpFzQIqG_400x400.jpg"
+                            alt="Channel 4" class="w-8 h-10 rounded-full mr-3 " />
+                        <div class="flex-grow ">
+                            <span class="block font-bold text-white">Todo news</span>
+                            <span class=" tagChannel block text-sm text-gray-500 px-3">@toloNews</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#0000F5">
+                                <path
+                                    d="M368.09-131.5 305-238l-120.5-25.44 12-124.06L116-480l80.5-92.51-12-123.99 120.64-25.4L368-828.5l111.95 47.68 111.96-47.68L655-722l120.5 25.44-12 124.06L844-480l-80.5 92.51 12 123.99-120.64 25.4L592-131.5l-111.95-47.68-111.96 47.68Zm70.41-245 187-187-18.5-18L438.67-413 353-499l-18.5 18.5 104 104Z" />
+                            </svg>
+                        </div>
+                        <button class=" border border-gray-300 bg-blue-500 mr-20 px-3 rounded-full hover:bg-blue-600">
+                            Follow
+                        </button>
+                     </div>
+                </div>
+    
+    
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>
