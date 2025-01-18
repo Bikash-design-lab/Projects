@@ -8,7 +8,7 @@ import About from "./Pages/About";
 import Register from "./Pages/Register";
 import NotFound from "./Pages/NotFound";
 import ProductDetails from "./Pages/ProductDetails";
-import AddToCart from "./Pages/AddToCart";
+// import AddToCart from "./Pages/AddToCart";
 import ProtectedRoutes from "./Utils/ProtectedRoutes";
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
         <Route path="/products/:userID" element={<ProductDetails />} />{" "}
         {/* Corrected ProductDetails route */}
         <Route path="*" element={<NotFound />} />
-        <Route path="/:userID/AddToCart" element={<AddToCart />} />
+        {/* <Route path="/:userID/AddToCart" element={<AddToCart />} /> */}
       </Routes>
     </>
   );

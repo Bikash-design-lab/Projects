@@ -53,21 +53,18 @@ const Products = () => {
   });
   return (
     <>
-      <div className=" flex justify-start items-center ">
+      <div className=" flex justify-start items-center mx-4">
         <p className="text-sm text-gray-700 my-4">
-          Showing {products.length} products
+          <b>Showing {products.length} products</b>
         </p>
         <select className="border-2 ml-2" onChange={handleSortChange}>
           <option value="All">sort-by</option>
           <option value="l2h"> ₹ : Low-2-high</option>
           <option value="h2l"> ₹ : high-2-low</option>
         </select>
-        <select>
-          <option value=""></option>
-        </select>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
         {sortedProducts.map((prod) => (
           <div
             className="relative bg-white border rounded-lg shadow-md p-4"

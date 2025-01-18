@@ -22,6 +22,9 @@ const Home = () => {
   }, []);
 
   const carouselImages = [
+    "https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/d521f284a0827057.jpeg?q=20",
+    "https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/56cb2ccc444c9596.jpeg?q=20",
+    "https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/59fc23cbcec79183.jpeg?q=20",
     "https://img.freepik.com/free-photo/portrait-beautiful-cute-happy-sweet-surprised-blonde-woman-girl-holding-her-hands-big-shopping-bag-hipster-red-clothes-isolated-white_158538-13476.jpg",
     "https://img.freepik.com/free-photo/woman-with-shopping-bags-studio-yellow-background-isolated_1303-14292.jpg",
     "https://img.freepik.com/premium-photo/indian-man-traditional-wear-kurta-pyjama-cloths-male-fashion-model-sherwani-posing-standing-against-brown-grunge-background-selective-focus_466689-45391.jpg",
@@ -51,7 +54,6 @@ const Home = () => {
 
   return (
     <div className="p-4">
-      {/* Banner Section with Image */}
       <div
         className="w-full h-96 bg-cover bg-center text-white text-center flex justify-center items-center"
         style={{
@@ -88,7 +90,7 @@ const Home = () => {
       <div className="my-12">
         <div className="relative">
           <img
-            className="w-full h-96 object-cover rounded-lg"
+            className="w-full h-60 object-cover rounded-lg"
             src="https://cdn.shopify.com/s/files/1/0070/7032/articles/trending-products_7ed711c4-206c-4b41-a321-711785f3a917.png?v=1729280622&originalWidth=1848&originalHeight=782&width=1800&originalWidth=1848&originalHeight=782&width=1000"
             alt="Featured Products"
           />
@@ -148,7 +150,7 @@ const Home = () => {
             {carouselImages.map((image, index) => (
               <div key={index} className="min-w-full">
                 <img
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="w-full h-96 object-cover rounded-lg"
                   src={image}
                   alt={`Slide ${index + 1}`}
                 />
@@ -170,7 +172,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Testimonial Section */}
       <div className="my-16 bg-gray-100 py-12 text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           What Our Customers Are Saying
@@ -199,7 +200,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Categories Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Shop by Categories
@@ -208,9 +208,10 @@ const Home = () => {
           <div className="text-center">
             <img
               className="w-24 h-24 object-cover rounded-full mx-auto"
-              src="https://via.placeholder.com/100"
-              alt="Category 1"
+              src="https://images.pexels.com/photos/1604024/pexels-photo-1604024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Elecronics"
             />
+
             <h3 className="mt-2 text-lg font-semibold">Electronics</h3>
             <Link
               to="/Products"
@@ -222,7 +223,7 @@ const Home = () => {
           <div className="text-center">
             <img
               className="w-24 h-24 object-cover rounded-full mx-auto"
-              src="https://via.placeholder.com/100"
+              src="https://images.pexels.com/photos/5935748/pexels-photo-5935748.jpeg?auto=compress&cs=tinysrgb&w=400"
               alt="Category 2"
             />
             <h3 className="mt-2 text-lg font-semibold">Clothing</h3>
@@ -236,7 +237,7 @@ const Home = () => {
           <div className="text-center">
             <img
               className="w-24 h-24 object-cover rounded-full mx-auto"
-              src="https://via.placeholder.com/100"
+              src="https://images.pexels.com/photos/313776/pexels-photo-313776.jpeg?auto=compress&cs=tinysrgb&w=400"
               alt="Category 3"
             />
             <h3 className="mt-2 text-lg font-semibold">Furniture</h3>
@@ -247,10 +248,54 @@ const Home = () => {
               Explore
             </Link>
           </div>
+
+          <div className="text-center">
+            <img
+              className="w-24 h-24 object-cover rounded-full mx-auto"
+              src="https://images.pexels.com/photos/1926988/pexels-photo-1926988.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Category 3"
+            />
+            <h3 className="mt-2 text-lg font-semibold">Books</h3>
+            <Link
+              to="/Products"
+              className="text-blue-600 hover:text-blue-700 transition"
+            >
+              Explore
+            </Link>
+          </div>
+
+          <div className="text-center">
+            <img
+              className="w-24 h-24 object-cover rounded-full mx-auto"
+              src="https://images.pexels.com/photos/3068579/pexels-photo-3068579.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Category 3"
+            />
+            <h3 className="mt-2 text-lg font-semibold">Toys</h3>
+            <Link
+              to="/Products"
+              className="text-blue-600 hover:text-blue-700 transition"
+            >
+              Explore
+            </Link>
+          </div>
+
+          <div className="text-center">
+            <img
+              className="w-24 h-24 object-cover rounded-full mx-auto"
+              src="https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Category 3"
+            />
+            <h3 className="mt-2 text-lg font-semibold">Grocery</h3>
+            <Link
+              to="/Products"
+              className="text-blue-600 hover:text-blue-700 transition"
+            >
+              Explore
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Footer Section */}
       <footer className="mt-20 bg-gray-800 text-white text-center py-6">
         <p className="text-sm">© 2025 E-Commerce Store. All rights reserved.</p>
         <div className="mt-4">

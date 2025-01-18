@@ -1,4 +1,5 @@
 import React from "react";
+import BikashProf from "../assets/BikashProf.jpg";
 
 const Profile = () => {
   return (
@@ -7,12 +8,12 @@ const Profile = () => {
       <div className="flex items-center space-x-6">
         <img
           className="w-28 h-28 rounded-full border-4 border-gray-200 shadow-lg"
-          src="https://img.freepik.com/free-vector/account-concept-illustration_114360-409.jpg?ga=GA1.1.884081781.1728731746&semt=ais_hybrid"
+          src={BikashProf}
           alt="Profile"
         />
         <div>
           <h1 className="text-3xl font-extrabold text-gray-900 hover:text-indigo-600 transition duration-300">
-            Aarav Kumar
+            Bikash Barmwal
           </h1>
           <p className="text-lg text-gray-600 italic">Store Manager</p>
         </div>
@@ -22,11 +23,11 @@ const Profile = () => {
       <div className="mt-8">
         <h2 className="text-2xl font-semibold text-gray-800">About Me</h2>
         <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-          Namaste! I'm Aarav Kumar, the store manager at "Sanskriti Finds," an
-          Indian fashion and lifestyle store. I am passionate about showcasing
-          the rich heritage and diversity of Indian culture through curated
-          collections and exceptional customer service. I strive to provide a
-          unique shopping experience for our customers.
+          Namaste! I'm Bikash Barmwal, the store manager at "Sanskriti Finds,"
+          an Indian fashion and lifestyle store. I am passionate about
+          showcasing the rich heritage and diversity of Indian culture through
+          curated collections and exceptional customer service. I strive to
+          provide a unique shopping experience for our customers.
         </p>
       </div>
 
