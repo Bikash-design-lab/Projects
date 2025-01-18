@@ -6,6 +6,7 @@ const Quiz = () => {
   const [question, setQuestion] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [correctAnswers, setCorrectAnswers] = useState({});
+  const [loading, setLoading] = useState(true); // Loading state
   const navigate = useNavigate();
   const { userId } = useParams();
 
@@ -32,14 +33,21 @@ const Quiz = () => {
           {}
         );
         setCorrectAnswers(correctAnswersObj);
+
+        // Set loading to false once data is fetched
+        setLoading(false);
       })
-      .catch((error) => console.error("Error fetching API", error));
+      .catch((error) => {
+        console.error("Error fetching API", error);
+        setLoading(false); // Set loading to false if there's an error
+      });
   }, []);
 
   const handleCheckAnswer = (e, questionId) => {
+    const selectedAnswer = e.target.value;
     setSelectedAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [questionId]: e.target.value,
+      [questionId]: selectedAnswer,
     }));
   };
 
@@ -80,6 +88,13 @@ const Quiz = () => {
     return options.sort(() => Math.random() - 0.5);
   };
 
+  const handleAnswerSelection = (questionId, option) => {
+    setSelectedAnswers((prevSelectedAnswers) => ({
+      ...prevSelectedAnswers,
+      [questionId]: option,
+    }));
+  };
+
   return (
     <>
       <div className="px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg">
@@ -92,33 +107,63 @@ const Quiz = () => {
         <Link to="/">Go Back</Link>
       </button>
 
-      <div className="max-w-4xl mx-auto mt-8 px-4 py-6 bg-white rounded-lg shadow-xl">
-        <p className="text-xl mb-6 font-semibold text-gray-700">
-          Total: {question.length} Questions
-        </p>
+      {/* Loading condition */}
+      {loading ? (
+        <div className="text-center my-10">
+          <p className="text-2xl text-blue-600">Loading Questions...</p>
+        </div>
+      ) : (
+        <div className="max-w-4xl mx-auto mt-8 px-4 py-6 bg-white rounded-lg shadow-xl">
+          <p className="text-xl mb-6 font-semibold text-gray-700">
+            Total: {question.length} Questions
+          </p>
 
-        {question.map((ques, id) => (
-          <div key={id} className="border-b-2 py-6 mb-6">
-            <div className="text-lg font-medium text-gray-800 mb-4">
-              <b>Question {id + 1}:</b> {ques.question}
-            </div>
-            <div className="space-y-4">
-              {ques.options.map((option, index) => (
-                <div key={index} className="flex items-center text-gray-600">
-                  <input
-                    type="radio"
-                    name={`question-${id}`}
-                    value={option}
-                    onClick={(e) => handleCheckAnswer(e, id)}
-                    className="mr-3 w-4 h-4 text-blue-500 focus:ring-blue-300"
-                  />
-                  <b>Option {index + 1}:</b> {option}
+          {question.map((ques, id) => {
+            const isAnswered = selectedAnswers[id]; // Check if the user has answered this question
+            const isCorrect =
+              isAnswered && selectedAnswers[id] === correctAnswers[id];
+
+            return (
+              <div key={id} className="border-b-2 py-6 mb-6">
+                <div className="text-lg font-medium text-gray-800 mb-4">
+                  <b>Question {id + 1}:</b> {ques.question}
                 </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+                <div className="space-y-4">
+                  {ques.options.map((option, index) => {
+                    const isSelected = selectedAnswers[id] === option;
+                    const correctAnswer = correctAnswers[id];
+
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center text-gray-600"
+                      >
+                        <input
+                          type="radio"
+                          name={`question-${id}`}
+                          value={option}
+                          onClick={() => handleAnswerSelection(id, option)}
+                          disabled={isAnswered} // Disable options if answered
+                          className={`mr-3 w-4 h-4 text-blue-500 focus:ring-blue-300 ${
+                            isSelected ? "bg-blue-500" : ""
+                          } ${isSelected && !isCorrect ? "bg-red-500" : ""}`}
+                        />
+                        <b>Option {index + 1}:</b> {option}
+                        {/* Show correct answer if wrong selection */}
+                        {isSelected && !isCorrect && (
+                          <span className="text-red-500 ml-2">
+                            Correct Answer: {correctAnswer}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <button
         onClick={handleSubmitQuiz}

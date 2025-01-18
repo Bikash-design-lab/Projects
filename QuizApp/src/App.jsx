@@ -13,6 +13,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        {/* Home page, accessible only to authenticated users */}
         <Route
           path="/"
           element={
@@ -21,6 +22,7 @@ function App() {
             </ProtectedRoutes>
           }
         />
+        {/* Quiz page, accessible only to authenticated users */}
         <Route
           path="/Quiz/:userId"
           element={
@@ -29,6 +31,7 @@ function App() {
             </ProtectedRoutes>
           }
         />
+        {/* Leaderboard page, accessible only to authenticated users */}
         <Route
           path="/LeaderBoard/:userId"
           element={
@@ -37,6 +40,7 @@ function App() {
             </ProtectedRoutes>
           }
         />
+        {/* Register page, accessible to everyone */}
         <Route path="/Register" element={<Register />} />
       </Routes>
     </>

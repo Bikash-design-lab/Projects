@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const Home = () => {
   const formDetails = { name: "", category: "", level: "", questions: "" };
   const [data, setData] = useState(formDetails);
   const [formSubmit, setFormSubmit] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
@@ -25,24 +26,41 @@ const Home = () => {
           questions: Number(data.questions),
           dateOfExam,
         };
+
+        setFormSubmit(true); // disable button while form is being submitted
         const response = await axios.post(
           "https://mmasai-default-rtdb.firebaseio.com/Users.json",
           preParedData
         );
-        setFormSubmit(true);
-        // setData({ name: "", category: "", level: "", questions: "" });
-        const userId = response.data.name;
-        navigate(`/Quiz/${userId}`);
+
+        // Reset form after submission
+        setData(formDetails);
+
+        if (response.status === 200) {
+          const userId = response.data.name;
+          navigate(`/Quiz/${userId}`);
+        }
       } catch (error) {
         console.log("Fails to post user form : ", error);
+        alert(
+          "There was an issue submitting your data. Please try again later."
+        );
+      } finally {
+        setFormSubmit(false); // re-enable the button after the request is completed
       }
     }
   };
 
-  // console.log(data);
-
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage:
+          "url('https://images.pexels.com/photos/7092596/pexels-photo-7092596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
       <h1 className="text-5xl text-center text-blue-800 my-8">
         Welcome to the Quiz!
       </h1>
@@ -119,9 +137,12 @@ const Home = () => {
           <div className="text-center">
             <button
               onClick={handleFormSubmit}
-              className="w-full py-2 px-4 text-white font-bold rounded-md bg-blue-700 hover:bg-blue-600 transform transition duration-300 hover:scale-105"
+              disabled={formSubmit}
+              className={`w-full py-2 px-4 text-white font-bold rounded-md ${
+                formSubmit ? "bg-gray-400" : "bg-blue-700 hover:bg-blue-600"
+              } transform transition duration-300 hover:scale-105`}
             >
-              Start Quiz
+              {formSubmit ? "Starting Quiz..." : "Start Quiz"}
             </button>
           </div>
         </div>
